@@ -28,6 +28,6 @@ Este projeto foi desenvolvido pela seguinte equipe:
 
 <a href="https://github.com/PedroSchuenck/PedroSchuenck.github.io" alt="Nome Participante" style="margin-bottom: 5px">Pedro Schuenck</a>
 
-<a href="https://github.com/RobertoAlaluna/Ferreira.github.io" alt="Nome Participante" style="margin-bottom: 5px">Roberto Alaluna</a>
+<a href="https://github.com/RobertoAlaluna/Ferreira.git" alt="Nome Participante" style="margin-bottom: 5px">Roberto Alaluna</a>
 
-<a href="https://github.com/lucccxs/Maciel.github.io" alt="Nome Participante" style="margin-bottom: 5px">Luccas Maciel</a>
+<a href="https://github.com/lucccxs/Maciel.git" alt="Nome Participante" style="margin-bottom: 5px">Luccas Maciel</a>
