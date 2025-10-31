@@ -16,9 +16,9 @@ Um sistema de gerenciamento simples e eficiente para barbearias. O Barb&Code aju
 
 💻 Tecnologias Utilizadas
 
-    Frontend: HTML5/CSS3/JavaScript.
+    Front-end: HTML5/CSS3/JavaScript.
 
-    Backend: Python/FastAPI.
+    Back-end: Python/FastAPI.
 
     Banco de Dados: PostgreSQL.
 
