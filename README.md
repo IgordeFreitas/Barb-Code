@@ -20,7 +20,7 @@ Um sistema de gerenciamento simples e eficiente para barbearias. O Barb&Code aju
 
     Back-end: Python/FastAPI.
 
-    Banco de Dados: PostgreSQL.
+    Banco de Dados: MySQL.
 
 👥 Contribuidores
 
