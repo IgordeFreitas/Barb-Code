@@ -1,3 +1,8 @@
+CREATE DATABASE BarbCode IF NOT EXISTS
+CHARACTER SET 'utf8mb4'
+COLLATE utf8mb4_unicode_ci;
+USE BarbCode;
+
 CREATE TABLE barbeiro (
   id_barbeiro INT AUTO_INCREMENT PRIMARY KEY,
   nome VARCHAR(70) NOT NULL,
