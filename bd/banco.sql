@@ -47,6 +47,13 @@ CREATE TABLE atendimento (
   id_cliente INT NOT NULL,
   id_servico INT,
   FOREIGN KEY (id_barbeiro) REFERENCES barbeiro(id_barbeiro),
-  FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente),
-  FOREIGN KEY (id_servico) REFERENCES servico(id_servico)
+  FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente)
 );
+
+CREATE TABLE atendimento_servico (
+  id_atendimento_servico INT AUTO_INCREMENT PRIMARY KEY,
+  id_atendimento INT NOT NULL,
+  id_servico INT NOT NULL,
+  FOREIGN KEY (id_atendimento) REFERENCES atendimento(id_atendimento),
+  FOREIGN KEY (id_servico) REFERENCES servico(id_servico)
+)
