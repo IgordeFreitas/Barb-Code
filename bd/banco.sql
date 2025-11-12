@@ -38,7 +38,7 @@ CREATE TABLE agenda (
   FOREIGN KEY (id_barbeiro) REFERENCES barbeiro(id_barbeiro)
 );
 
-CREATE TABLE atendimento (
+CREATE TABLE at. If you endimento (
   id_atendimento INT AUTO_INCREMENT PRIMARY KEY,
   data_hora_inicio DATETIME NOT NULL,
   data_hora_fim DATETIME NOT NULL,
@@ -56,4 +56,12 @@ CREATE TABLE atendimento_servico (
   id_servico INT NOT NULL,
   FOREIGN KEY (id_atendimento) REFERENCES atendimento(id_atendimento),
   FOREIGN KEY (id_servico) REFERENCES servico(id_servico)
+)
+
+CREATE TABLE barbeiro_servico(
+  id_barbeiro_servico INT AUTO_INCREMENT PRIMARY KEY,
+  id_barbeiro INT NOT NULL,
+  id_servico INT NOT NULL,
+  FOREIGN KEY (id_barbeiro) REFERENCES barbeiro (id_barbeiro),
+  FOREIGN KEY (id_servico) REFERENCES servico (id_servico)
 )
