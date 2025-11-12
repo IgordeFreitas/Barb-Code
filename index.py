@@ -1,34 +1,35 @@
 from fastapi import FastAPI, Body
+from controller.TesteController import consultarBarbeiro
 
 app = FastAPI()
 
 @app.get("/")
-def inicio():
-	return ({"menssage": "FastApi Online!"})
+def consultaBarbeiro():
+	return consultarBarbeiro()
 
-@app.get("/clientes/{id_cliente}")
-def getCliente(id_cliente):
-	return ({"cliente_id": id_cliente})
+# @app.get("/clientes/{id_cliente}")
+# def getCliente(id_cliente):
+# 	return ({"cliente_id": id_cliente})
 
-@app.get("/produtos")
-def todosOsProdutos():
-	return ({"Produtos": "Lista de Produtos"})
+# @app.get("/produtos")
+# def todosOsProdutos():
+# 	return ({"Produtos": "Lista de Produtos"})
 
 #@app.delete("/produtos/{id_produto}")
 #def deletarProduto(id_produto):
 #	return({"Ação": "deletar produto", "produto": {id_produto}})
 
-@app.delete("/produtos")
-def deletarProduto(id_produto: str = Body(embed=True)):
-	return({"Ação": "deletar produto", "produto": id_produto})
+# @app.delete("/produtos")
+# def deletarProduto(id_produto: str = Body(embed=True)):
+# 	return({"Ação": "deletar produto", "produto": id_produto})
 
-@app.post("/produtos")
-def cadastrarProduto(
-    nome_produto: str = Body(embed=True), 
-	categoria: str = Body(embed=True),
-    preco: float = Body(embed=True)
-):
-    return({"Ação": "Cadastrar Produto", "nome" : nome_produto, "categoria" : categoria, "preco" : str(preco)})
+# @app.post("/produtos")
+# def cadastrarProduto(
+#     nome_produto: str = Body(embed=True), 
+# 	categoria: str = Body(embed=True),
+#     preco: float = Body(embed=True)
+# ):
+#     return({"Ação": "Cadastrar Produto", "nome" : nome_produto, "categoria" : categoria, "preco" : str(preco)})
 
 #CRUD - C -> Create / R -> Read / U -> Update / D -> Delete
 
