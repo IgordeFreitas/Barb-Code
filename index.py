@@ -7,6 +7,7 @@ app = FastAPI()
 def consultaBarbeiro():
 	return consultarBarbeiro()
 
+
 # @app.get("/clientes/{id_cliente}")
 # def getCliente(id_cliente):
 # 	return ({"cliente_id": id_cliente})
