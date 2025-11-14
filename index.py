@@ -28,9 +28,10 @@ def consultaBarbeiro():
 # def cadastrarProduto(
 #     nome_produto: str = Body(embed=True), 
 # 	categoria: str = Body(embed=True),
-#     preco: float = Body(embed=True)
+#     preco: float = Body(embed=True),
+# 	especialidade: str = Body(embed=True)
 # ):
-#     return({"Ação": "Cadastrar Produto", "nome" : nome_produto, "categoria" : categoria, "preco" : str(preco)})
+#     return({"Ação": "Cadastrar Produto", "nome" : nome_produto, "categoria" : categoria, "preco" : str(preco), "especialidade":especialidade} )
 
 #CRUD - C -> Create / R -> Read / U -> Update / D -> Delete
 
