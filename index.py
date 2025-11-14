@@ -1,11 +1,30 @@
 from fastapi import FastAPI, Body
-from controller.TesteController import consultarBarbeiro
+from controller.getBarbeiro import consultarBarbeiro
+from controller.patchBarbeiro import patchBarbeiro
+from controller.postBarbeiro import cadastrarBarbeiro
+
 
 app = FastAPI()
 
 @app.get("/")
 def consultaBarbeiro():
 	return consultarBarbeiro()
+
+@app.patch("/barbeiros/{id}")
+def updateBarbeiro():
+	return patchBarbeiro()
+
+@app.post("/barbeiros")
+def cadastroBarbeiro(
+	nome: str = Body(embed=True), 
+ 	cpf: str = Body(embed=True),
+    email: float = Body(embed=True),
+ 	senha: str = Body(embed=True),
+	telefone: str = Body(embed=True)
+
+
+	return ({"Ação": "Cadastrar Produto", nome})
+):
 
 
 # @app.get("/clientes/{id_cliente}")

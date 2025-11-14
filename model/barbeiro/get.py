@@ -1,5 +1,5 @@
-    
-def modelTeste(connection):
+def get(connection):
+    print(connection)
     cursor = connection.cursor(dictionary=True)
     cursor.execute("select id_barbeiro, nome from barbeiro")
 
