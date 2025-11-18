@@ -1,4 +1,6 @@
-def update(connection):
-    cursor = connection.cursor
-    cursor.execute("UPDATE barbeiro SET nome = {noveNome}, cpf = {novoCpf}, email = {novoEmail}, senha = {novaSenha}, telefone = {novoTelefone} WHERE id_barbeiro = {id}")
+def update(connection, novoNome, novoCpf, novoEmail, novaSenha, novoTelefone, id):
+    cursor = connection.cursor()
+    query = " UPDATE barbeiro SET nome = %s, cpf = %s, email = %s, senha = %s, telefone = %s WHERE id_barbeiro = %s "
+    cursor.execute(query,(novoNome, novoCpf, novoEmail, novaSenha, novoTelefone, id))
     cursor.close()
+    return cursor.rowcount

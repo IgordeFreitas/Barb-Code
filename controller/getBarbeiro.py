@@ -4,7 +4,6 @@ from model.barbeiro.get import get
 def consultarBarbeiro():
     connection = None
     try:
-
         connection = getConnection()
         return get(connection)
 

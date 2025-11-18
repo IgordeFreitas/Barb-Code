@@ -10,21 +10,27 @@ app = FastAPI()
 def consultaBarbeiro():
 	return consultarBarbeiro()
 
-@app.patch("/barbeiros/{id}")
-def updateBarbeiro():
-	return patchBarbeiro()
+@app.patch("/barbeiros")
+def updateBarbeiro(
+	id: int = Body(embed=True),
+	nome: str = Body(embed=True), 
+ 	cpf: str = Body(embed=True),
+    email: str = Body(embed=True),
+ 	senha: str = Body(embed=True),
+	telefone: str = Body(embed=True)
+):
+	return patchBarbeiro(nome, cpf, email, senha, telefone, id)
 
 @app.post("/barbeiros")
 def cadastroBarbeiro(
 	nome: str = Body(embed=True), 
  	cpf: str = Body(embed=True),
-    email: float = Body(embed=True),
+    email: str = Body(embed=True),
  	senha: str = Body(embed=True),
 	telefone: str = Body(embed=True)
-
-
-	return ({"Ação": "Cadastrar Produto", nome})
 ):
+	return cadastrarBarbeiro(nome, cpf, email, senha, telefone)
+
 
 
 # @app.get("/clientes/{id_cliente}")

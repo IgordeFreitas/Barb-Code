@@ -1,9 +1,9 @@
     
-def post(connection):
-    cursor = connection.cursor
-    cursor.execute("insert into barbeiro(nome, cpf, email, senha, telefone) values('Luccas','111.222.333-52','luccasamcabral@gmail.com','140307','22992383691')")
+def post(connection, nome, cpf, email, senha, telefone):
+    cursor = connection.cursor()
 
-    barbeiros = cursor.fetchall()
+    dados = (nome, cpf, email, senha, telefone)
+    query = "insert into barbeiro(nome, cpf, email, senha, telefone) values(%s,%s,%s,%s,%s)"
+    cursor.execute(query, dados)
+
     cursor.close()
-    
-    return barbeiros
