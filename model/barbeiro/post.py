@@ -1,4 +1,3 @@
-    
 def post(connection, nome, cpf, email, senha, telefone):
     cursor = connection.cursor()
 

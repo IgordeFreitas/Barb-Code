@@ -1,7 +1,7 @@
 from config.dbConfig import getConnection
-from model.barbeiro.delete import delete
+from model.cliente.delete import delete
 
-def deletarBarbeiro(id: int):
+def deletarCliente(id: int):
     connection = None
     connection = getConnection()
     try:
@@ -12,7 +12,7 @@ def deletarBarbeiro(id: int):
 
         connection.rollback() 
         
-        print(f"Erro ao deletar barbeiro: {e}") 
+        print(f"Erro ao deletar cliente: {e}") 
         
         return {"erro": "Ao conectar com o banco ou executar a consulta. Veja o console para detalhes.", "status": 500}
     finally:
