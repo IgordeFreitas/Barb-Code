@@ -12,9 +12,44 @@ from controller.cliente.deleteCliente import deletarCliente
 
 from controller.agenda.getAgenda import consultarAgenda
 
+
+
+
+from controller.servico.getServico import consultarServico
+from controller.servico.patchServico import patchServico
+from controller.servico.postServico import cadastrarServico
+from controller.servico.deleteServico import deletarServico
+
 app = FastAPI()
 
 @app.get("/barbeiros")
+def consultaBarbeiro():
+	return consultarBarbeiro()
+
+@app.patch("/barbeiros")
+def updateBarbeiro(
+	id: int = Body(embed=True),
+	nome: str = Body(embed=True), 
+ 	cpf: str = Body(embed=True),
+    email: str = Body(embed=True),
+ 	senha: str = Body(embed=True),
+	telefone: str = Body(embed=True)
+):
+	return patchBarbeiro(nome, cpf, email, senha, telefone, id)
+
+@app.post("/barbeiros")
+def cadastroBarbeiro(
+	nome: str = Body(embed=True), 
+ 	cpf: str = Body(embed=True),
+    email: str = Body(embed=True),
+ 	senha: str = Body(embed=True),
+	telefone: str = Body(embed=True)
+):
+	return cadastrarBarbeiro(nome, cpf, email, senha, telefone)
+
+@app.delete("/barbeiros/{id}")
+def deleteBarbeiro(id: int):
+	return deletarBarbeiro(id)@app.get("/barbeiros")
 def consultaBarbeiro():
 	return consultarBarbeiro()
 
@@ -128,3 +163,27 @@ def consultaAgenda():
 
 
 #até aqui
+
+
+@app.get("/servicos")
+def consultaServico():
+	return consultarServico()
+
+@app.patch("/servicos")
+def updateServico(
+	id: int = Body(embed=True),
+	nome: str = Body(embed=True), 
+	preco: str = Body(embed=True)
+):
+	return patchServico(nome, preco, id)
+
+@app.post("/servicos")
+def cadastroServico(
+	nome: str = Body(embed=True), 
+	preco: str = Body(embed=True)
+):
+	return cadastrarServico(nome, preco)
+
+@app.delete("/servicos/{id}")
+def deleteServico(id: int):
+	return deletarServico(id)
