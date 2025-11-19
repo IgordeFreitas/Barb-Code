@@ -1,10 +1,20 @@
 from fastapi import FastAPI, Body
-from controller.getBarbeiro import consultarBarbeiro
-from controller.patchBarbeiro import patchBarbeiro
-from controller.postBarbeiro import cadastrarBarbeiro
-
+from controller.barbeiro.getBarbeiro import consultarBarbeiro
+from controller.barbeiro.patchBarbeiro import patchBarbeiro
+from controller.barbeiro.postBarbeiro import cadastrarBarbeiro
+from controller.barbeiro.deleteBarbeiro import deletarBarbeiro
 
 app = FastAPI()
+
+@app.post("/barbeiros")
+def cadastroBarbeiro(
+	nome: str = Body(embed=True), 
+ 	cpf: str = Body(embed=True),
+    email: str = Body(embed=True),
+ 	senha: str = Body(embed=True),
+	telefone: str = Body(embed=True)
+):
+	return cadastrarBarbeiro(nome, cpf, email, senha, telefone)
 
 @app.get("/")
 def consultaBarbeiro():
@@ -21,15 +31,10 @@ def updateBarbeiro(
 ):
 	return patchBarbeiro(nome, cpf, email, senha, telefone, id)
 
-@app.post("/barbeiros")
-def cadastroBarbeiro(
-	nome: str = Body(embed=True), 
- 	cpf: str = Body(embed=True),
-    email: str = Body(embed=True),
- 	senha: str = Body(embed=True),
-	telefone: str = Body(embed=True)
-):
-	return cadastrarBarbeiro(nome, cpf, email, senha, telefone)
+@app.delete("/barbeiros/{id}")
+def deleteBarbeiro(id: int):
+	return deletarBarbeiro(id)
+
 
 
 
@@ -45,9 +50,6 @@ def cadastroBarbeiro(
 #def deletarProduto(id_produto):
 #	return({"Ação": "deletar produto", "produto": {id_produto}})
 
-# @app.delete("/produtos")
-# def deletarProduto(id_produto: str = Body(embed=True)):
-# 	return({"Ação": "deletar produto", "produto": id_produto})
 
 # @app.post("/produtos")
 # def cadastrarProduto(
