@@ -10,39 +10,21 @@ from controller.cliente.patchCliente import patchCliente
 from controller.cliente.postCliente import cadastrarCliente
 from controller.cliente.deleteCliente import deletarCliente
 
-<<<<<<< HEAD
 from controller.agenda.getAgenda import consultarAgenda
 from controller.agenda.postAgenda import cadastrarAgenda
-=======
+
+
+
 from controller.servico.getServico import consultarServico
 from controller.servico.patchServico import patchServico
 from controller.servico.postServico import cadastrarServico
 from controller.servico.deleteServico import deletarServico
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 from controller.atendimento.getAtendimento import consultarAtendimento
 from controller.atendimento.postAtendimento import cadastrarAtendimento
 from controller.atendimento.deleteAtendimento import deletarAtendimento
 from controller.atendimento.patchAtendimento import patchAtendimento
 
->>>>>>> refs/remotes/origin/main
 
 app = FastAPI()
 
@@ -136,16 +118,13 @@ def deleteCliente(id: int):
 def consultaServico():
 	return consultarServico()
 
-<<<<<<< HEAD
 @app.post("/agenda")
 def cadastraAgenda(dataHora: str = Body(embed=True), status: str = Body(embed=True)):
 	return cadastrarAgenda(dataHora, status)
 
-=======
 @app.post("/servicos")
 def cadastrarServico(nome: str = Body(embed=True), preco: float = Body(embed=True)):
 	return cadastrarServico(nome, preco)
->>>>>>> refs/remotes/origin/main
 
 @app.patch("/servicos/{id}")
 def updateServico(novoNome: str = Body(embed=True), novoPreco: float = Body(embed=True), id: int = Body(embed=True)):
