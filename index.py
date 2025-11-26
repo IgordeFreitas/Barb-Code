@@ -71,7 +71,60 @@ def cadastroCliente(
 def deleteCliente(id: int):
 	return deletarCliente(id)
 
-
 @app.get("/agenda")
 def consultaAgenda():
 	return consultarAgenda()
+
+
+#rotas das outras tabelas
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#até aqui
