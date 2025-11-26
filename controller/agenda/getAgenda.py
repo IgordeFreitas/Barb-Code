@@ -1,7 +1,7 @@
 from config.dbConfig import getConnection
-from model.cliente.get import get
+from model.agenda.get import get
 
-def consultarCliente():
+def consultarAgenda():
     connection = None
     try:
         connection = getConnection()
@@ -12,7 +12,7 @@ def consultarCliente():
         if connection:
             connection.rollback()
 
-        print(f"Erro ao consultar barbeiro: {e}")
+        print(f"Erro ao consultar agenda: {e}")
         return {"erro": "Ao conectar com o banco ou executar a consulta. Veja o console para detalhes.", "status": 500}
         
     finally:
