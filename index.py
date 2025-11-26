@@ -11,6 +11,7 @@ from controller.cliente.postCliente import cadastrarCliente
 from controller.cliente.deleteCliente import deletarCliente
 
 from controller.agenda.getAgenda import consultarAgenda
+from controller.agenda.postAgenda import cadastrarAgenda
 
 app = FastAPI()
 
@@ -74,6 +75,10 @@ def deleteCliente(id: int):
 @app.get("/agenda")
 def consultaAgenda():
 	return consultarAgenda()
+
+@app.post("/agenda")
+def cadastraAgenda(dataHora: str = Body(embed=True), status: str = Body(embed=True)):
+	return cadastrarAgenda(dataHora, status)
 
 
 #rotas das outras tabelas

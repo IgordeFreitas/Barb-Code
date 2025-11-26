@@ -1,8 +1,8 @@
-def post(connection, nome, email, senha, telefone):
+def post(connection, dataHora, status):
     cursor = connection.cursor()
 
-    dados = (nome, email, senha, telefone)
-    query = "insert into cliente(nome, email, telefone, senha) values(%s,%s,%s,%s)"
+    dados = (dataHora, status)
+    query = "insert into agenda(data_hora, status) values(%s,%s)"
     cursor.execute(query, dados)
 
     cursor.close()
