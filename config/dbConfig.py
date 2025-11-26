@@ -13,7 +13,7 @@ DB_PASSWORD = os.getenv("DB_PASSWORD")
 DB_NAME = os.getenv("DB_NAME")
 
 # Verifica se as variáveis foram carregadas
-if not all([DB_HOST, DB_USER, DB_PASSWORD, DB_NAME]):
+if not all([DB_HOST, DB_USER, DB_PASSWORD, DB_NAME, DB_PORT]):
     print("Erro: As variáveis de ambiente do banco de dados não foram carregadas corretamente. Verifique o arquivo .env.")
     connectionPool = None
 else:

@@ -10,6 +10,28 @@ from controller.cliente.patchCliente import patchCliente
 from controller.cliente.postCliente import cadastrarCliente
 from controller.cliente.deleteCliente import deletarCliente
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+from controller.atendimento.getAtendimento import consultarAtendimento
+from controller.atendimento.postAtendimento import cadastrarAtendimento
+
+
 app = FastAPI()
 
 @app.get("/barbeiros")
@@ -68,6 +90,141 @@ def cadastroCliente(
 @app.delete("/clientes/{id}")
 def deleteCliente(id: int):
 	return deletarCliente(id)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@app.get("/atendimento")
+def consultaAtendimento():
+	return consultarAtendimento()
+
+@app.post("/atendimento")
+def cadastroAtendimento(
+	data_hora_inicio: str = Body(embed=True), 
+	data_hora_fim: str = Body(embed=True),
+    status: str = Body(embed=True),
+	id_barbeiro: int = Body(embed=True),
+	id_cliente: int = Body(embed=True),
+	id_servico: int = Body(embed=True)
+):
+	return cadastrarAtendimento(data_hora_inicio, data_hora_fim, status, id_barbeiro, id_cliente, id_servico)
 
 
 # @app.get("/clientes/{id_cliente}")
