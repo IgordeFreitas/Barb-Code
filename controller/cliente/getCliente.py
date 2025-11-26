@@ -11,12 +11,7 @@ def consultarCliente():
     except Exception as e:
         if connection:
             connection.rollback()
-
-<<<<<<< HEAD
-        print(f"Erro ao consultar barbeiro: {e}")
-=======
         print(f"Erro ao consultar cliente: {e}")
->>>>>>> refs/remotes/origin/main
         return {"erro": "Ao conectar com o banco ou executar a consulta. Veja o console para detalhes.", "status": 500}
         
     finally:
