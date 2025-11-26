@@ -1,20 +1,20 @@
 from config.dbConfig import getConnection
-from model.cliente.get import get
+from model.atendimento.update import update
 
-
-def consultarCliente():
+def patchAtendimento(novaDataInicio, novaDataFim, novoStatus, novoIdBarbeiro, novoIdCliente, novoIdServico, id):
     connection = None
     try:
         connection = getConnection()
-        return get(connection)
-
-        ok = get(connection)
+        
+        ok = update(connection, novaDataInicio, novaDataFim, novoStatus, novoIdBarbeiro, novoIdCliente, novoIdServico, id)
         connection.commit()
         return ok
+
     except Exception as e:
         if connection:
             connection.rollback()
-        print(f"Erro ao consultar cliente: {e}")
+
+        print(f"Erro ao fazer o update de atendimento: {e}")
         return {"erro": "Ao conectar com o banco ou executar a consulta. Veja o console para detalhes.", "status": 500}
         
     finally:

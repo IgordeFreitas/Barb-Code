@@ -64,4 +64,4 @@ CREATE TABLE barbeiro_servico(
   id_servico INT,
   FOREIGN KEY (id_barbeiro) REFERENCES barbeiro (id_barbeiro) ON DELETE SET NULL ON UPDATE CASCADE,
   FOREIGN KEY (id_servico) REFERENCES servico (id_servico) ON DELETE SET NULL ON UPDATE CASCADE
-)
+);
