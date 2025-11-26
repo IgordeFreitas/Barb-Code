@@ -1,22 +1,16 @@
 from config.dbConfig import getConnection
 from model.cliente.get import get
 
-<<<<<<< HEAD
 
-=======
->>>>>>> refs/remotes/origin/main
 def consultarCliente():
     connection = None
     try:
         connection = getConnection()
-<<<<<<< HEAD
         return get(connection)
 
-=======
         ok = get(connection)
         connection.commit()
         return ok
->>>>>>> refs/remotes/origin/main
     except Exception as e:
         if connection:
             connection.rollback()

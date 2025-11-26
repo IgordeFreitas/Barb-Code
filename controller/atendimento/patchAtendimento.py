@@ -1,12 +1,12 @@
 from config.dbConfig import getConnection
-from model.barbeiro.update import update
+from model.atendimento.update import update
 
-def patchBarbeiro(novoNome, novoCpf, novoEmail, novaSenha, novoTelefone, id):
+def patchAtendimento(novaDataInicio, novaDataFim, novoStatus, novoIdBarbeiro, novoIdCliente, novoIdServico, id):
     connection = None
     try:
         connection = getConnection()
         
-        ok = update(connection, novoNome, novoCpf, novoEmail, novaSenha, novoTelefone, id)
+        ok = update(connection, novaDataInicio, novaDataFim, novoStatus, novoIdBarbeiro, novoIdCliente, novoIdServico, id)
         connection.commit()
         return ok
 
@@ -14,7 +14,7 @@ def patchBarbeiro(novoNome, novoCpf, novoEmail, novaSenha, novoTelefone, id):
         if connection:
             connection.rollback()
 
-        print(f"Erro ao fazer o update de barbeiro: {e}")
+        print(f"Erro ao fazer o update de atendimento: {e}")
         return {"erro": "Ao conectar com o banco ou executar a consulta. Veja o console para detalhes.", "status": 500}
         
     finally:

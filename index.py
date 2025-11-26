@@ -30,6 +30,8 @@ from controller.cliente.deleteCliente import deletarCliente
 
 from controller.atendimento.getAtendimento import consultarAtendimento
 from controller.atendimento.postAtendimento import cadastrarAtendimento
+from controller.atendimento.deleteAtendimento import deletarAtendimento
+from controller.atendimento.patchAtendimento import patchAtendimento
 
 
 app = FastAPI()
@@ -252,6 +254,22 @@ def cadastroAtendimento(
 	id_servico: int = Body(embed=True)
 ):
 	return cadastrarAtendimento(data_hora_inicio, data_hora_fim, status, id_barbeiro, id_cliente, id_servico)
+
+@app.delete("/atendimento/{id}")
+def deleteAtendimento(id: int):
+	return deletarAtendimento(id)
+
+@app.patch("/atendimento")
+def updateAtendimento(
+	id: int = Body(embed=True),
+	data_hora_inicio: str = Body(embed=True), 
+	data_hora_fim: str = Body(embed=True),
+    status: str = Body(embed=True),
+	id_barbeiro: int = Body(embed=True),
+	id_cliente: int = Body(embed=True),
+	id_servico: int = Body(embed=True)
+):
+	return patchAtendimento(data_hora_inicio, data_hora_fim, status, id_barbeiro, id_cliente, id_servico, id)
 
 
 # @app.get("/clientes/{id_cliente}")
