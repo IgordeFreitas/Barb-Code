@@ -10,6 +10,11 @@ from controller.cliente.patchCliente import patchCliente
 from controller.cliente.postCliente import cadastrarCliente
 from controller.cliente.deleteCliente import deletarCliente
 
+from controller.servico.getServico import consultarServico
+from controller.servico.patchServico import patchServico
+from controller.servico.postServico import cadastrarServico
+from controller.servico.deleteServico import deletarServico
+
 
 
 
@@ -63,7 +68,9 @@ def cadastroBarbeiro(
 
 @app.delete("/barbeiros/{id}")
 def deleteBarbeiro(id: int):
-	return deletarBarbeiro(id)@app.get("/barbeiros")
+	return deletarBarbeiro(id)
+
+@app.get("/barbeiros")
 def consultaBarbeiro():
 	return consultarBarbeiro()
 
@@ -119,6 +126,22 @@ def cadastroCliente(
 @app.delete("/clientes/{id}")
 def deleteCliente(id: int):
 	return deletarCliente(id)
+
+@app.get("/servicos")
+def consultaServico():
+	return consultarServico()
+
+@app.post("/servicos")
+def cadastrarServico(nome: str = Body(embed=True), preco: float = Body(embed=True)):
+	return cadastrarServico(nome, preco)
+
+@app.patch("/servicos/{id}")
+def updateServico(novoNome: str = Body(embed=True), novoPreco: float = Body(embed=True), id: int = Body(embed=True)):
+	return patchServico(novoNome, novoPreco, id)
+
+app.delete("/servicos")
+def deleteServico(id: int = Body(embed=True)):
+	return deletarServico(id)
 
 
 
