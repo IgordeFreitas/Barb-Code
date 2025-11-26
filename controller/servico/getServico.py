@@ -1,26 +1,18 @@
 from config.dbConfig import getConnection
-from model.cliente.get import get
+from model.servico.get import get
 
-<<<<<<< HEAD
-
-=======
->>>>>>> refs/remotes/origin/main
-def consultarCliente():
+def consultarServico():
     connection = None
     try:
         connection = getConnection()
-<<<<<<< HEAD
-        return get(connection)
-
-=======
         ok = get(connection)
         connection.commit()
         return ok
->>>>>>> refs/remotes/origin/main
     except Exception as e:
         if connection:
             connection.rollback()
-        print(f"Erro ao consultar cliente: {e}")
+
+        print(f"Erro ao consultar servico: {e}")
         return {"erro": "Ao conectar com o banco ou executar a consulta. Veja o console para detalhes.", "status": 500}
         
     finally:

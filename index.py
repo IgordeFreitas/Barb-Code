@@ -61,6 +61,33 @@ def cadastroBarbeiro(
 
 @app.delete("/barbeiros/{id}")
 def deleteBarbeiro(id: int):
+	return deletarBarbeiro(id)@app.get("/barbeiros")
+def consultaBarbeiro():
+	return consultarBarbeiro()
+
+@app.patch("/barbeiros")
+def updateBarbeiro(
+	id: int = Body(embed=True),
+	nome: str = Body(embed=True), 
+ 	cpf: str = Body(embed=True),
+    email: str = Body(embed=True),
+ 	senha: str = Body(embed=True),
+	telefone: str = Body(embed=True)
+):
+	return patchBarbeiro(nome, cpf, email, senha, telefone, id)
+
+@app.post("/barbeiros")
+def cadastroBarbeiro(
+	nome: str = Body(embed=True), 
+ 	cpf: str = Body(embed=True),
+    email: str = Body(embed=True),
+ 	senha: str = Body(embed=True),
+	telefone: str = Body(embed=True)
+):
+	return cadastrarBarbeiro(nome, cpf, email, senha, telefone)
+
+@app.delete("/barbeiros/{id}")
+def deleteBarbeiro(id: int):
 	return deletarBarbeiro(id)
 
 
