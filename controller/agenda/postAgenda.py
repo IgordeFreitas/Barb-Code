@@ -1,12 +1,12 @@
 from config.dbConfig import getConnection
 from model.agenda.post import post
 
-def cadastrarAgenda(dataHora, status):
+def cadastrarAgenda(dataHora, status, idBarbeiro):
     connection = None
     try:
         connection = getConnection()
         
-        post(connection, dataHora, status)
+        post(connection, dataHora, status, idBarbeiro)
         connection.commit() 
         
         return {"mensagem": "Agenda cadastrado com sucesso!", "status": 201}

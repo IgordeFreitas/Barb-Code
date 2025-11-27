@@ -1,12 +1,12 @@
 from config.dbConfig import getConnection
-from model.cliente.update import update
+from model.agenda.update import update
 
-def patchCliente(novoNome, novoEmail, novoTelefone, novaSenha, id):
+def patchAgenda(idAgenda, novaDataHora, novoStatus, novoIdBarbeiro):
     connection = None
     try:
         connection = getConnection()
         
-        ok = update(connection, novoNome, novoEmail, novoTelefone, novaSenha, id)
+        ok = update(connection, idAgenda, novaDataHora, novoStatus, novoIdBarbeiro)
         connection.commit()
         return ok
 
