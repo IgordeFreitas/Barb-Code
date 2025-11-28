@@ -26,6 +26,7 @@ from controller.servico.deleteServico import deletarServico
 from controller.agenda.getAgenda import consultarAgenda
 from controller.agenda.postAgenda import cadastrarAgenda
 from controller.agenda.patchAgenda import patchAgenda
+from controller.agenda.deleteAgenda import deletarAgenda
 
 # ATENDIMENTO
 from controller.atendimento.getAtendimento import consultarAtendimento
@@ -144,9 +145,13 @@ def post_agenda(dataHora: str = Body(embed=True), status: str = Body(embed=True)
 def patch_agenda(idAgenda: int = Body(embed=True) ,novaDataHora: str = Body(embed=True), novoStatus: str = Body(embed=True), novoIdBarbeiro: int = Body(embed=True)):
     return patchAgenda(idAgenda, novaDataHora, novoStatus, novoIdBarbeiro)
 
+@app.delete("/agenda/{id}")
+def delete_agenda(id:int):
+    return deletarAgenda(id)
+
 
 # --------------------------------------------------------------------
-## 🏷️ Rotas para ATENDIMENTO (/atendimento)
+## Rotas para ATENDIMENTO (/atendimento)
 # --------------------------------------------------------------------
 
 @app.get("/atendimento")

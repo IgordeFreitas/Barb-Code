@@ -1,7 +1,7 @@
 from config.dbConfig import getConnection
-from model.cliente.delete import delete
+from model.agenda.delete import delete
 
-def deletarCliente(id: int):
+def deletarAgenda(id):
     connection = None
     connection = getConnection()
     try:
@@ -12,7 +12,7 @@ def deletarCliente(id: int):
 
         connection.rollback() 
         
-        print(f"Erro ao deletar cliente: {e}") 
+        print(f"Erro ao deletar agenda: {e}") 
         
         return {"erro": "Ao conectar com o banco ou executar a consulta. Veja o console para detalhes.", "status": 500}
     finally:
