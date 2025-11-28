@@ -1,17 +1,23 @@
 # Seu controller/postBarbeiro.py (Corrigido)
 from config.dbConfig import getConnection
 from model.barbeiro.post import post
-
+from utils.validarCPF import validarCPF
+from utils.validarNome import validarNome
 def cadastrarBarbeiro(nome, cpf, email, senha, telefone):
     connection = None
     try:
         connection = getConnection()
         
-        post(connection, nome, cpf, email, senha, telefone)
-        connection.commit() 
-        
-        return {"mensagem": "Barbeiro cadastrado com sucesso!", "status": 201}
+        validacao = validarCPF(cpf) and validarNome(nome)
 
+        if validacao:
+            post(connection, nome, cpf, email, senha, telefone)
+            connection.commit() 
+        
+            return {"mensagem": "Barbeiro cadastrado com sucesso!", "status": 201}
+        else:
+            return {"erro": "Ao cadastrar os dados do barbeiro"}
+        
     except Exception as e:
         if connection:
             connection.rollback() 
