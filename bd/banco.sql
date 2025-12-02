@@ -33,7 +33,7 @@ CREATE TABLE servico (
 CREATE TABLE agenda (
   id_agenda INT AUTO_INCREMENT PRIMARY KEY,
   data_hora DATETIME NOT NULL,
-  status ENUM('disponivel', 'reservado', 'cancelado') DEFAULT 'disponivel',
+  status ENUM('disponivel', 'reservado', 'cancelado', 'indisponível') DEFAULT 'disponivel',
   id_barbeiro INT,
   FOREIGN KEY (id_barbeiro) REFERENCES barbeiro(id_barbeiro) ON DELETE SET NULL ON UPDATE CASCADE
 );
@@ -58,7 +58,7 @@ CREATE TABLE atendimento_servico (
   FOREIGN KEY (id_servico) REFERENCES servico(id_servico) ON DELETE SET NULL ON UPDATE CASCADE
 );
 
-CREATE TABLE barbeiro_servico(
+CREATE TABLE barbeiro_servico (
   id_barbeiro_servico INT AUTO_INCREMENT PRIMARY KEY,
   id_barbeiro INT,
   id_servico INT,
