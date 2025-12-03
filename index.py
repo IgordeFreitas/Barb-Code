@@ -34,6 +34,9 @@ from controller.atendimento.postAtendimento import cadastrarAtendimento
 from controller.atendimento.deleteAtendimento import deletarAtendimento
 from controller.atendimento.patchAtendimento import patchAtendimento
 
+# ATENDIMENTO SERVICO
+from controller.atendimentoServico.getAtendimentoServico import consultarAtendimentoServico
+
 # ====================================================================
 #  Inicialização do App
 # ====================================================================
@@ -129,36 +132,36 @@ def delete_servico(id: int = Body(embed=True)):
     return deletarServico(id)
 
 # --------------------------------------------------------------------
-##  Rotas para AGENDA (/agenda)
+##  Rotas para AGENDA (/agendas)
 # --------------------------------------------------------------------
 
-# Não existe rota GET para /agenda no seu código. Adicionando uma presumida.
-@app.get("/agenda")
+# Não existe rota GET para /agendas no seu código. Adicionando uma presumida.
+@app.get("/agendas")
 def get_agenda():
     return consultarAgenda()
 
-@app.post("/agenda")
+@app.post("/agendas")
 def post_agenda(dataHora: str = Body(embed=True), status: str = Body(embed=True), idBarbeiro: int = Body(embed=True)):
     return cadastrarAgenda(dataHora, status, idBarbeiro)
 
-@app.patch("/agenda")
+@app.patch("/agendas")
 def patch_agenda(idAgenda: int = Body(embed=True) ,novaDataHora: str = Body(embed=True), novoStatus: str = Body(embed=True), novoIdBarbeiro: int = Body(embed=True)):
     return patchAgenda(idAgenda, novaDataHora, novoStatus, novoIdBarbeiro)
 
-@app.delete("/agenda/{id}")
+@app.delete("/agendas/{id}")
 def delete_agenda(id:int):
     return deletarAgenda(id)
 
 
 # --------------------------------------------------------------------
-## Rotas para ATENDIMENTO (/atendimento)
+## Rotas para ATENDIMENTO (/atendimentos)
 # --------------------------------------------------------------------
 
-@app.get("/atendimento")
+@app.get("/atendimentos")
 def get_atendimento():
     return consultarAtendimento()
 
-@app.post("/atendimento")
+@app.post("/atendimentos")
 def post_atendimento(
     data_hora_inicio: str = Body(embed=True), 
     data_hora_fim: str = Body(embed=True),
@@ -169,7 +172,7 @@ def post_atendimento(
 ):
     return cadastrarAtendimento(data_hora_inicio, data_hora_fim, status, id_barbeiro, id_cliente, id_servico)
 
-@app.patch("/atendimento")
+@app.patch("/atendimentos")
 def patch_atendimento(
     id: int = Body(embed=True),
     data_hora_inicio: str = Body(embed=True), 
@@ -181,6 +184,14 @@ def patch_atendimento(
 ):
     return patchAtendimento(data_hora_inicio, data_hora_fim, status, id_barbeiro, id_cliente, id_servico, id)
 
-@app.delete("/atendimento/{id}")
+@app.delete("/atendimentos/{id}")
 def delete_atendimento(id: int):
     return deletarAtendimento(id)
+
+# --------------------------------------------------------------------
+## Rotas para ATENDIMENTO_SERVICO (/atendimentos_servicos)
+# --------------------------------------------------------------------
+
+@app.get("/atendimentos_servicos/{id}")
+def get_atendimento_servico(id: int):
+	return consultarAtendimentoServico(id)

@@ -42,7 +42,7 @@ CREATE TABLE atendimento (
   id_atendimento INT AUTO_INCREMENT PRIMARY KEY,
   data_hora_inicio DATETIME NOT NULL,
   data_hora_fim DATETIME NOT NULL,
-  status ENUM('concluido', 'pendente', 'cancelado') DEFAULT 'concluido',
+  status ENUM('concluido', 'pendente', 'cancelado') DEFAULT 'pendente',
   id_barbeiro INT,
   id_cliente INT,
   id_servico INT,
