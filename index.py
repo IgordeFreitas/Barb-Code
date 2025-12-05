@@ -37,6 +37,12 @@ from controller.atendimento.patchAtendimento import patchAtendimento
 # ATENDIMENTO SERVICO
 from controller.atendimentoServico.getAtendimentoServico import consultarAtendimentoServico
 
+# BARBEIRO SERVICO
+from controller.barbeiroServico.getBarbeiroServico import consultarBarbeiroServico
+#from controller.barbeiroServico.postBarbeiroServico import cadastrarBarbeiroServico
+#from controller.barbeiroServico.deleteBarbeiroServico import deletarBarbeiroServico
+#from controller.barbeiroServico.patchBarbeiroServico import patchBarbeiroServico
+
 # ====================================================================
 #  Inicialização do App
 # ====================================================================
@@ -195,3 +201,11 @@ def delete_atendimento(id: int):
 @app.get("/atendimentos_servicos/{id}")
 def get_atendimento_servico(id: int):
 	return consultarAtendimentoServico(id)
+
+# --------------------------------------------------------------------
+## Rotas para BARBEIRO_SERVICO (/barbeiros/{id}/servicos)
+# --------------------------------------------------------------------
+
+@app.get("/barbeiros/{id}/servicos")
+def get_barbeiros_servico(id: int):
+	return consultarBarbeiroServico(id)
