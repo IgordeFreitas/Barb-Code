@@ -1,8 +1,8 @@
-def post(connection, nome, cpf, email, senha, telefone):
+def post(connection, id_barbeiro, id_servico):
     cursor = connection.cursor()
 
-    dados = (nome, cpf, email, senha, telefone)
-    query = "insert into barbeiro(nome, cpf, email, senha, telefone) values(%s,%s,%s,%s,%s)"
+    dados = (id_barbeiro, id_servico)
+    query = "insert into barbeiro_servico(id_barbeiro, id_servico) values(%s,%s)"
     cursor.execute(query, dados)
 
     cursor.close()

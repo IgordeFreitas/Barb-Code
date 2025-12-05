@@ -39,9 +39,9 @@ from controller.atendimentoServico.getAtendimentoServico import consultarAtendim
 
 # BARBEIRO SERVICO
 from controller.barbeiroServico.getBarbeiroServico import consultarBarbeiroServico
-#from controller.barbeiroServico.postBarbeiroServico import cadastrarBarbeiroServico
+from controller.barbeiroServico.postBarbeiroServico import cadastrarBarbeiroServico
 #from controller.barbeiroServico.deleteBarbeiroServico import deletarBarbeiroServico
-#from controller.barbeiroServico.patchBarbeiroServico import patchBarbeiroServico
+from controller.barbeiroServico.patchBarbeiroServico import patchBarbeiroServico
 
 # ====================================================================
 #  Inicialização do App
@@ -151,7 +151,12 @@ def post_agenda(dataHora: str = Body(embed=True), status: str = Body(embed=True)
     return cadastrarAgenda(dataHora, status, idBarbeiro)
 
 @app.patch("/agendas")
-def patch_agenda(idAgenda: int = Body(embed=True) ,novaDataHora: str = Body(embed=True), novoStatus: str = Body(embed=True), novoIdBarbeiro: int = Body(embed=True)):
+def patch_agenda(
+    idAgenda: int = Body(embed=True),
+    novaDataHora: str = Body(embed=True), 
+    novoStatus: str = Body(embed=True), 
+    novoIdBarbeiro: int = Body(embed=True)
+):
     return patchAgenda(idAgenda, novaDataHora, novoStatus, novoIdBarbeiro)
 
 @app.delete("/agendas/{id}")
@@ -209,3 +214,17 @@ def get_atendimento_servico(id: int):
 @app.get("/barbeiros/{id}/servicos")
 def get_barbeiros_servico(id: int):
 	return consultarBarbeiroServico(id)
+
+@app.post("/barbeiros/{id_barbeiro}/servicos")
+def post_barbeiros_servico(
+    id_barbeiro: int,
+    id_servico: int = Body(embed=True)
+):
+    return cadastrarBarbeiroServico(id_barbeiro, id_servico)
+
+@app.patch("/barbeiros/{id_barbeiro}/servicos")
+def patch_barbeiros_servico(
+    id_barbeiro: int,
+    id_servico: int = Body(embed=True)
+):
+    return patchBarbeiroServico(id_barbeiro, id_servico)
