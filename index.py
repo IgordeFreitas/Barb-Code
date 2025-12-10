@@ -6,7 +6,8 @@ from routes import (
     barbeiro,
     barbeiroServico,
     cliente,
-    servico
+    servico,
+    login
 )
 # ====================================================================
 #  Inicialização do App
@@ -21,3 +22,4 @@ app.include_router (barbeiro.router)
 app.include_router (barbeiroServico.router)
 app.include_router (cliente.router)
 app.include_router (servico.router)
+app.include_router (login.router)
